@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Exercicio 1 -->
+    <!-- <h1>TITULO</h1>
+    <p>PARAGRAFO</p>
+    <div>DADOS</div> -->
+
+    <!-- Exercicio 6 -->
+    <p class="info">Era uma vez...</p>
+
+    <script>
+        // Exercicio 1
+        // console.log(this); // é window
+        //
+        // let exibeConteudo = () => {
+        //     console.log(this);
+        //     alert(this.textContent);
+        // };
+        //
+        // $ = document.querySelector.bind(document);
+        //
+        // $('h1').addEventListener('click', exibeConteudo);
+        //
+        // $('p').addEventListener('click', exibeConteudo);
+        //
+        // $('div').addEventListener('click', exibeConteudo);
+
+        // Exercicio 2
+        // class SistemaImpressao {
+        //
+        //     constructor() {
+        //         this._codigo = 2;
+        //     }
+        //
+        //     imprime(nomes) {
+        //
+        //         nomes.forEach(nome => {
+        //             console.log(this);
+        //             console.log(`${this._codigo}: ${nome}`);
+        //         });
+        //     }
+        // }
+        //
+        // let nomes = ['Flávio', 'Nico', 'Douglas'];
+        // let si = new SistemaImpressao();
+        // si.imprime(nomes);
+
+        // Exercicio 3
+        // class Relogio {
+        //
+        //     constructor() {
+        //         this._segundos = 0;
+        //
+        //         setInterval(() => console.log(++this._segundos), 1000)
+        //     }
+        // }
+        //
+        // var relogio = new Relogio();
+
+        // Exercicio 4
+        // let carro = {
+        //     velocidade: 100,
+        //     acelera: () => {
+        //         console.log(this);
+        //         console.log(`Carro a ${this.velocidade} km por hora!`);
+        //     }
+        // };
+        // carro.acelera();
+
+        // Exercicio 5
+        // let objeto1 = {
+        //     nome: 'Bob'
+        // };
+        //
+        // let objeto2 = {
+        //     nome: 'Leo'
+        // }
+        //
+        // function exibeNome(prefixo, sufixo) {
+        //     alert(prefixo + this.nome + sufixo);
+        // }
+        //
+        // Reflect.apply(exibeNome, objeto1, ['(', ')']);
+        // Reflect.apply(exibeNome, objeto2, ['(', ')']);
+
+        // Exercicio 6
+        class Aviao {
+            constructor(nome) {
+                this._nome = nome;
+            }
+
+            voa() {
+                alert(`${this._nome} está voando`);
+            }
+
+            ligaMotor() {
+                console.log('liga o motor');
+            }
+
+            fechaPortas() {
+                console.log('Portas sendo fechadas');
+            }
+        }
+
+        class Passarinho {
+            constructor(nome) {
+                this._nome = nome;
+                // this._aviao = new Aviao(nome);
+            }
+
+            voa() {
+                // usa o método voa de Aviao.
+                // this._aviao.voa();
+
+                // executa o método `voa` de `Aviao` usando como contexto a instancia de `Passarinho`
+                Reflect.apply(Aviao.prototype.voa, this, []);
+            }
+        }
+
+    </script>
+</body>
+</html>
